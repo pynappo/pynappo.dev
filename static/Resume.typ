@@ -103,12 +103,12 @@
       rows: auto,
       left_col: 3fr,
     )
-    - Integrated an internal tool to deploy copies of pre-prod infrastructure onto personal AWS accounts, enabling safe
-      testing up to 10 minutes faster than previous testing workflows.
+    - Integrated an internal tool in Java to deploy copies of pre-prod infrastructure onto personal AWS accounts,
+      enabling safe testing up to 10 minutes faster than previous testing workflows.
     - Resolved a critical CLI bug by collaborating with the internal tooling team, enabling tool compatibility
       with our complex services.
     - Optimized local development builds by removing unnecessary tasks, slashing build times by over 60%.
-    - Reduced infra costs by >\$3,000 per month / developer by reconfiguring service scaling on personal accounts.
+    - Reduced infra costs by >\$2,000 per month / developer by reconfiguring service scaling on personal accounts.
     - Authored 5 pages of technical documentation on tool usage and maintenance, ensuring long-term sustainability.
     - Drove project velocity across 6 Agile sprints by proactively communicating updates, upcoming work, and blockers.
   ]
@@ -134,10 +134,23 @@
       [== #link("https://devpost.com/software/storycraft", [storycraft 🔗])],
       [April 2024],
     )
-    - Led a team of 4 to build an AI interactive storytelling app that won "Best AI Hack" at SFHacks 2024.
+    - Led a team of 4 to build an AI interactive storytelling app in 2 days that won "Best AI Hack" at SFHacks 2024.
     - Engineered prompts for Mixtral 8x7B and Stable Diffusion XL to generate stylized stories based on user choices.
     - Implemented our designer's front-end UI designs from Figma in React components using Tailwind CSS.
     - Constructed REST end-points backed by MongoDB and AWS S3 to store stories, characters, and illustrations.
+
+    #experience_header(
+      [== #link(
+        "https://github.com/PrabhnoorKhatkar/CS157A-Team10",
+        [Brushstroke Bargains 🔗],
+      )],
+      [October 2024 -- December 2024],
+    )
+    - Led a team of 4 to build an interactive website for art auctions, using MySQL and Jakarta Server Pages.
+    - Secured user data using email + password authentication (with SHA256 hashing) in MySQL + Java.
+    - Engineered a Java backend to store images separately from the database, reducing database size by 90% and
+      improving SQL query times by up to 20%.
+    - Modernized the front-end UI using Shoelace web components and standard CSS animations.
 
     #experience_header(
       [== #link("https://github.com/danknessdra/rmpdev", [ProfessorSearch 🔗])],
@@ -147,7 +160,7 @@
     - Scraped RMP's GraphQL API with Python and Postman queries to retrieve updated data across 1000s of schools.
     - Wrote a TypeScript service to fetch professor data by school on-demand, improving initial search latency by >90%.
     - Integrated Elasticsearch to index 10+ MB of professor data, achieving sub-second search and aggregation latency.
-    - Designed the front-end UI with shadcn-svelte and Tailwind CSS for a modern UI.
+    - Designed a modern front-end UI with shadcn-svelte and Tailwind CSS.
     - Containerized the app and services using Docker Compose for consistent local development and deployment.
   ]
 }
