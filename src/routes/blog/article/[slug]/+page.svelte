@@ -1,11 +1,7 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
 
-	let props: PageProps = $props();
-	console.log(props)
-
-	let data = props.data;
-	console.log(data);
+	let {data}: PageProps = $props();
 </script>
 
 <svelte:head>

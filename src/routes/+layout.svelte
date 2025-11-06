@@ -2,22 +2,25 @@
 	let { children } = $props();
 </script>
 
-<div class="app">
-	<header>
-		<nav>
-			<a href="/about">
-				About
-			</a>
-		</nav>
-	</header>
+<header>
+	<nav>
+		<a href="/about">
+			About
+		</a>
+		<a href="/blog">
+			Blog
+		</a>
+	</nav>
+</header>
 
-	<main>
-		{@render children()}
-	</main>
+<svelte:head>
+	<link rel="stylesheet" href="/css/main.css">
+</svelte:head>
 
-	<footer>
-		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
-	</footer>
-</div>
+<main>
+	{@render children()}
+</main>
+
+<footer>
+	pynappo's site.
+</footer>

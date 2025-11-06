@@ -6,13 +6,14 @@ export const fetchTypstPosts = async () => {
 
 	const allPosts = await Promise.all(
 		iterablePostFiles.map(async ([path, resolver]) => {
-			const { title, description, body } = await resolver();
+			const { title, description, body, tags } = await resolver();
 			const postPath = path.slice(11, -3);
 
 			return {
 				title,
 				description,
 				body,
+				tags,
 			};
 		}),
 	);

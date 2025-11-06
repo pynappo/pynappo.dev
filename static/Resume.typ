@@ -66,6 +66,18 @@
 
 #show: resume
 
+#let classes = (
+  "Data Structures and Algorithms",
+  "Information Security",
+  "Object Oriented Design",
+  // "Processing Big Data",
+  "Operating Systems",
+  "Computer Architecture",
+  // "Advanced Python",
+  // "Programming Paradigms",
+  "Software Engineering",
+  "Database Management Systems",
+)
 #let education() = {
   [
     #smallcaps([= Education])
@@ -83,7 +95,7 @@
       rows: auto,
     )
 
-    *Related coursework:* Data Structures and Algorithms, Object Oriented Design, Processing Big Data, Operating Systems, Computer Architecture, Information Security, Advanced Python, Programming Paradigms, Software Engineering, Database Management Systems.
+    *Related coursework:* #classes.join(", ", last: ", and ").
   ]
 }
 
@@ -105,10 +117,10 @@
     )
     - Integrated an internal tool in Java to deploy copies of pre-prod infrastructure onto personal AWS accounts,
       enabling safe testing up to 10 minutes faster than previous testing workflows.
-    - Resolved a critical CLI bug by collaborating with the internal tooling team, enabling tool compatibility
-      with our complex services.
-    - Optimized local development builds by removing unnecessary tasks, slashing build times by over 60%.
-    - Reduced infra costs by >\$2,000 per month / developer by reconfiguring service scaling on personal accounts.
+    - Resolved a CLI bug by collaborating with the internal tooling team, enabling tool compatibility
+      for our services.
+    - Optimized local development builds by removing unnecessary tasks, cutting build times by over 60%.
+    - Reduced infra costs by >\$1,000 per month / developer by reconfiguring service scaling on personal accounts.
     - Authored 5 pages of technical documentation on tool usage and maintenance, ensuring long-term sustainability.
     - Drove project velocity across 6 Agile sprints by proactively communicating updates, upcoming work, and blockers.
   ]
@@ -124,10 +136,12 @@
       [December 2024 -- Present],
     )
     - Lead maintainer of one of the largest Neovim file-tree plugins, w/ 5,000+ GitHub stars & \~20,000+ users.
+    - Adopted multiple open-source Lua libraries and plugins to add new features and integrations, ensuring license
+      compatibility.
     - Cut parsing time for Git statuses by over 50% by optimizing hot paths and deferring work.
     - Engineered a robust GitHub Actions CI pipeline, running hundreds of unit and end-to-end tests to ensure stability across multiple Neovim
       versions and operating systems.
-    - Refactored 3,000+ lines of Lua code to be type-annotated for improved developer experience.
+    // - Refactored 3,000+ lines of Lua code to be type-annotated for improved developer experience.
     - Personally fixed 70+ issues - non-ASCII text handling, performance issues, user feature requests, UI bugs, etc.
 
     #experience_header(
@@ -139,18 +153,18 @@
     - Implemented our designer's front-end UI designs from Figma in React components using Tailwind CSS.
     - Constructed REST end-points backed by MongoDB and AWS S3 to store stories, characters, and illustrations.
 
-    #experience_header(
-      [== #link(
-        "https://github.com/PrabhnoorKhatkar/CS157A-Team10",
-        [Brushstroke Bargains 🔗],
-      )],
-      [October 2024 -- December 2024],
-    )
-    - Led a team of 4 to build an interactive website for art auctions, using MySQL and Jakarta Server Pages.
-    - Secured user data using email + password authentication (with SHA256 hashing) in MySQL + Java.
-    - Engineered a Java backend to store images separately from the database, reducing database size by 90% and
-      improving SQL query times by up to 20%.
-    - Modernized the front-end UI using Shoelace web components and standard CSS animations.
+    // #experience_header(
+    //   [== #link(
+    //     "https://github.com/PrabhnoorKhatkar/CS157A-Team10",
+    //     [Brushstroke Bargains 🔗],
+    //   )],
+    //   [October 2024 -- December 2024],
+    // )
+    // - Led a team of 4 to build an interactive website for art auctions, using MySQL and Jakarta Server Pages.
+    // - Secured user data using email + password authentication (with SHA256 hashing) in MySQL + Java.
+    // - Engineered a Java backend to store images separately from the database, reducing database size by 90% and
+    //   improving SQL query times by up to 20%.
+    // - Modernized the front-end UI using Shoelace web components and standard CSS animations.
 
     #experience_header(
       [== #link("https://github.com/danknessdra/rmpdev", [ProfessorSearch 🔗])],

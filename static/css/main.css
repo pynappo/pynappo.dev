@@ -1,0 +1,102 @@
+/* https://thecascade.dev/article/least-amount-of-css/ */
+:root {
+  /* --- Base UI & Editor --- */
+  --ayu-mirage-ui-base: #1f2430;
+  --ayu-mirage-editor-base: #242936;
+
+  /* --- Common Colors --- */
+  --ayu-mirage-common-accent: #ffcc66;
+  --ayu-mirage-common-error: #ff6666;
+
+  /* --- UI Colors --- */
+  --ayu-mirage-ui-fg: #707a8c;
+  --ayu-mirage-ui-bg: var(--ayu-mirage-ui-base);
+  --ayu-mirage-ui-line: #171b24;
+  --ayu-mirage-ui-selection-active: rgba(
+    99,
+    117,
+    153,
+    0.15
+  ); /* #637599 with 0.15 alpha */
+  --ayu-mirage-ui-selection-normal: rgba(
+    105,
+    117,
+    140,
+    0.12
+  ); /* #69758C with 0.12 alpha */
+  --ayu-mirage-ui-panel-bg: #1c212b;
+  --ayu-mirage-ui-panel-shadow: rgba(
+    18,
+    21,
+    28,
+    0.7
+  ); /* #12151C with 0.7 alpha */
+
+  /* --- Editor Colors --- */
+  --ayu-mirage-editor-fg: #cccac2;
+  --ayu-mirage-editor-bg: var(--ayu-mirage-editor-base);
+  --ayu-mirage-editor-line: #1a1f29;
+  --ayu-mirage-editor-selection-active: rgba(
+    64,
+    159,
+    255,
+    0.25
+  ); /* #409FFF with 0.25 alpha */
+  --ayu-mirage-editor-selection-inactive: rgba(
+    64,
+    159,
+    255,
+    0.13
+  ); /* #409FFF with 0.13 alpha */
+  --ayu-mirage-editor-find-match-active: #695380;
+  --ayu-mirage-editor-find-match-inactive: rgba(
+    105,
+    83,
+    128,
+    0.4
+  ); /* #695380 with 0.4 alpha */
+  /* --- Syntax Highlighting --- */
+  --ayu-mirage-syntax-tag: #5ccfe6;
+  --ayu-mirage-syntax-func: #ffd173;
+  --ayu-mirage-syntax-entity: #73d0ff;
+  --ayu-mirage-syntax-string: #d5ff80;
+  --ayu-mirage-syntax-regexp: #95e6cb;
+  --ayu-mirage-syntax-markup: #f28779;
+  --ayu-mirage-syntax-keyword: #ffad66;
+  --ayu-mirage-syntax-special: #ffdfb3;
+  --ayu-mirage-syntax-comment: rgba(
+    184,
+    207,
+    230,
+    0.5
+  ); /* #B8CFE6 with 0.5 alpha */
+  --ayu-mirage-syntax-constant: #dfbfff;
+  --ayu-mirage-syntax-operator: #f29e74;
+
+  /* --- VCS (Version Control) --- */
+  --ayu-mirage-vcs-added: #87d96c;
+  --ayu-mirage-vcs-modified: #80bfff;
+  --ayu-mirage-vcs-removed: #f27983;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  font-family: system-ui;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+main {
+  max-width: min(70ch, 100% - 4rem);
+  margin-inline: auto;
+}

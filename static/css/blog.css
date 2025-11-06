@@ -1,0 +1,7 @@
+.tag {
+  font-size: 1.25rem;
+  padding-inline: 1em;
+  padding-block: 0.8em;
+  line-height: 1.25;
+  border-radius: 999em; /* Creates a pill shape */
+}
