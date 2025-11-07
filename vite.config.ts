@@ -6,6 +6,7 @@ export default defineConfig({
 	plugins: [
 		sveltekit(),
 		TypstPlugin({
+			// the ts-node-compiler doesn't work with new Typst 0.14 HTML features like typed HTML.
 			compiler: "typst-cli",
 			onResolveParts: (input, project, ctx) => {
 				const res = checkExecResult(input, project.tryHtml(input), ctx);
@@ -14,7 +15,11 @@ export default defineConfig({
 				}
 				return {
 					tags: project.query(input, {
-						selector: "<tags>",
+						selector: "<tag>",
+						field: "text",
+					}),
+					title: project.query(input, {
+						selector: "<title>",
 						field: "value",
 					}),
 				};

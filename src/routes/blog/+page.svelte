@@ -6,8 +6,10 @@
 
 {#each data.posts as post}
 	<article>
-		<h2>
-			{post.body}
-		</h2>
+		<a href={`blog/article${post.postPath}`}>
+			<h2>
+					{post.title}
+			</h2>
+		</a>
 	</article>
 {/each}

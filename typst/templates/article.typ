@@ -1,6 +1,15 @@
+#let category-tab(name: "") = context {
+  if target() == "html" {
+    html.a(class: "tag", href: "/blog/by-tag/" + name)[name <tag>]
+  } else {
+    [[#name <tag>]]
+  }
+}
+
 #let article(
-  date-created: none,
+  date-published: none,
   date-updated: none,
+  article-title: "Placeholder Title",
   authors: (
     (
       name: "pynappo",
@@ -9,17 +18,20 @@
   ),
   tags: ("misc",),
   summary: "",
+  title-override: none,
   rest,
 ) = context {
   set document(
+    title: article-title,
     author: authors.map(author => author.name),
     keywords: tags,
-    date: if (date-updated == none) { date-created } else { date-updated },
+    date: if (date-updated == none) { date-published } else { date-updated },
     description: summary,
   )
+  title()
+  [#metadata(article-title) <title>]
   if target() == "html" {
     html.article()[
-      #title()
       #html.div(class: "authors")[
         By: #for author in authors {
           html.span(class: "author")[#author.name (#link("mailto:" + author.email))]
@@ -27,7 +39,7 @@
       ]
       #html.div(class: "tags")[
         #for tag in tags {
-          html.span(class: "tag")[#tag]
+          category-tab(name: tag)
         }
       ] <tags>
 
@@ -39,11 +51,10 @@
       #for author in authors {
         [- #author.name #link("mailto:" + author.email)]
       }
-    ]
-    [
+      Tags:
       #for tag in tags {
-        tag
-      } <tags>
+        [- #category-tab(name: tag)]
+      }
     ]
     rest
   }
