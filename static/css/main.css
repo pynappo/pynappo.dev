@@ -96,6 +96,12 @@ video {
   display: block;
 }
 
+pre > code {
+  max-width: 100%;
+  display: block;
+  overflow-x: scroll;
+}
+
 main {
   max-width: min(70ch, 100% - 4rem);
   margin-inline: auto;

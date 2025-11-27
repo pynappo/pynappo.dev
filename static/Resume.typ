@@ -1,14 +1,19 @@
 #let experience_header(
-  left_content,
-  right_content,
+  technologies: "",
   left_col: 2fr,
   right_col: 1fr,
   rows: 1mm,
+  left_content,
+  right_content,
 ) = {
+  show heading.where(level: 2): it => {
+    set text(14pt)
+    it
+  }
   grid(
     columns: (left_col, right_col),
     rows: rows,
-    align(left)[#left_content], align(right)[#right_content],
+    align(left)[#box[#left_content]], align(right)[#right_content],
   )
 }
 
@@ -43,18 +48,17 @@
     https("github.com/pynappo"),
     [Mobile: +1 (xxx) xxx-xxxx],
     link("mailto:pynappo@proton.me"),
-    https("linkedin.com/in/put-jhere/"),
+    https("linkedin.com/in/put-here/"),
   ),
   rest,
 ) = {
-  set page(margin: (
-    top: 1cm,
-    x: 1.5cm,
-    bottom: 1cm,
-  ))
-
   set page(
     paper: "us-letter",
+    margin: (
+      top: 1cm,
+      x: 1.5cm,
+      bottom: 1cm,
+    ),
   )
   // minimal padding
   show heading: set block(below: 0.08in, above: 0.2in)
@@ -70,7 +74,7 @@
   "Data Structures and Algorithms",
   "Information Security",
   "Object Oriented Design",
-  // "Processing Big Data",
+  "Processing Big Data",
   "Operating Systems",
   "Computer Architecture",
   // "Advanced Python",
@@ -110,13 +114,13 @@
       ],
       [
         May 2025 - August 2025 #linebreak()
-        Palo Alto, CA
+        East Palo Alto, CA
       ],
       rows: auto,
       left_col: 3fr,
     )
-    - Integrated an internal tool in Java to deploy copies of pre-prod infrastructure onto personal AWS accounts,
-      enabling safe testing up to 10 minutes faster than previous testing workflows.
+    - Integrated an internal tool in Java to deploy copies of pre-prod data processing infrastructure onto personal AWS
+      accounts, enabling safe testing up to 10 minutes faster than previous testing workflows.
     - Resolved a CLI bug by collaborating with the internal tooling team, enabling tool compatibility
       for our services.
     - Optimized local development builds by removing unnecessary tasks, cutting build times by over 60%.
@@ -132,20 +136,22 @@
     #line(length: 100%)
 
     #experience_header(
-      [== #github("nvim-neo-tree", "neo-tree.nvim")],
+      [*#github("nvim-neo-tree", "neo-tree.nvim")* | CI/CD, Lua, Unix/Linux/Windows],
       [December 2024 -- Present],
+      technologies: "Unix",
     )
     - Lead maintainer of one of the largest Neovim file-tree plugins, w/ 5,000+ GitHub stars & \~20,000+ users.
-    - Adopted multiple open-source Lua libraries and plugins to add new features and integrations, ensuring license
-      compatibility.
+    // - Adopted multiple open-source Lua libraries and plugins to add new features and integrations, ensuring license
+    //   compatibility.
     - Cut parsing time for Git statuses by over 50% by optimizing hot paths and deferring work.
     - Engineered a robust GitHub Actions CI pipeline, running hundreds of unit and end-to-end tests to ensure stability across multiple Neovim
       versions and operating systems.
-    // - Refactored 3,000+ lines of Lua code to be type-annotated for improved developer experience.
-    - Personally fixed 70+ issues - non-ASCII text handling, performance issues, user feature requests, UI bugs, etc.
+    - Refactored internal systems (events, configuration, UI) to be type-annotated for improved developer experience.
+    - Personally fixed 70+ issues - non-ASCII text handling, performance issues, user feature requests, and UI bugs.
 
     #experience_header(
-      [== #link("https://devpost.com/software/storycraft", [storycraft 🔗])],
+      [*#link("https://devpost.com/software/storycraft", [storycraft 🔗])* | AI/LLM, TypeScript,
+        React, CSS, MongoDB + AWS S3],
       [April 2024],
     )
     - Led a team of 4 to build an AI interactive storytelling app in 2 days that won "Best AI Hack" at SFHacks 2024.
@@ -167,7 +173,8 @@
     // - Modernized the front-end UI using Shoelace web components and standard CSS animations.
 
     #experience_header(
-      [== #link("https://github.com/danknessdra/rmpdev", [ProfessorSearch 🔗])],
+      [*#link("https://github.com/danknessdra/rmpdev", [ProfessorSearch 🔗])* | SvelteKit,
+        GraphQL, TypeScript, Docker, Python],
       [February 2024 -- June 2024],
     )
     - Developed a SvelteKit web app to provide an improved search and filtering UI for _#https("ratemyprofessor.com")_ (RMP) data.

@@ -6,6 +6,12 @@
   }
 }
 
+#let sidenote(body) = context {
+  if target() == "html" {} else {
+    [(sidenote: #body)]
+  }
+}
+
 #let article(
   date-published: none,
   date-updated: none,
