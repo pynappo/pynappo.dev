@@ -6,7 +6,7 @@
 
 {#each data.posts as post}
 	<article>
-		<a href={`blog/article${post.postPath}`}>
+		<a href={`blog/article/${post.postPath}`}>
 			<h2>
 					{post.title}
 			</h2>

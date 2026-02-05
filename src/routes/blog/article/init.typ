@@ -12,20 +12,21 @@ Having a blog to post and ramble on is cool.
 
 = Goals:
 
-- It should use a markup format like Markdown or Typst, because writing HTML can be a pain.
-- It should be versatile enough to implement things like a tagging system.
+The blog should:
+
+- Use a markup format like Markdown or Typst, because writing HTML can be a pain.
+- Be versatile enough to implement things like a tagging system.
+- Be able to work without client-side JavaScript.
 
 = Implementation:
 
-This website is built with SvelteKit. I looked up a guide for how people make Markdown blogs on SvelteKit and found
+I chose SvelteKit because people tend to praise it for strong DX. I looked up a guide for how people make Markdown blogs
+on SvelteKit and found
 #link(
   "https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog",
   [this wonderful blogpost
     from Josh Collinsworth],
-). I wanted to try using S
-could be.
-
-== Why not markdown?
+).
 
 Amazingly, simply adapting the guide to use
 #link(
@@ -40,7 +41,7 @@ export default defineConfig({
 	plugins: [
 		sveltekit(),
 		TypstPlugin({
-			// the ts-node-compiler doesn't work with new Typst 0.14 HTML features like typed HTML.
+			// the ts-node-compiler doesn't support typed HTML (e.g. #html.p()), which is new in Typst 0.14
 			compiler: "typst-cli",
 			onResolveParts: (input, project, ctx) => {
 				const res = checkExecResult(input, project.tryHtml(input), ctx);
@@ -58,3 +59,6 @@ export default defineConfig({
 	],
 });
 ```
+
+== Why not markdown?
+

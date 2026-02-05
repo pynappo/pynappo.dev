@@ -1,84 +1,4 @@
-/* https://thecascade.dev/article/least-amount-of-css/ */
-:root {
-  /* --- Base UI & Editor --- */
-  --ayu-mirage-ui-base: #1f2430;
-  --ayu-mirage-editor-base: #242936;
-
-  /* --- Common Colors --- */
-  --ayu-mirage-common-accent: #ffcc66;
-  --ayu-mirage-common-error: #ff6666;
-
-  /* --- UI Colors --- */
-  --ayu-mirage-ui-fg: #707a8c;
-  --ayu-mirage-ui-bg: var(--ayu-mirage-ui-base);
-  --ayu-mirage-ui-line: #171b24;
-  --ayu-mirage-ui-selection-active: rgba(
-    99,
-    117,
-    153,
-    0.15
-  ); /* #637599 with 0.15 alpha */
-  --ayu-mirage-ui-selection-normal: rgba(
-    105,
-    117,
-    140,
-    0.12
-  ); /* #69758C with 0.12 alpha */
-  --ayu-mirage-ui-panel-bg: #1c212b;
-  --ayu-mirage-ui-panel-shadow: rgba(
-    18,
-    21,
-    28,
-    0.7
-  ); /* #12151C with 0.7 alpha */
-
-  /* --- Editor Colors --- */
-  --ayu-mirage-editor-fg: #cccac2;
-  --ayu-mirage-editor-bg: var(--ayu-mirage-editor-base);
-  --ayu-mirage-editor-line: #1a1f29;
-  --ayu-mirage-editor-selection-active: rgba(
-    64,
-    159,
-    255,
-    0.25
-  ); /* #409FFF with 0.25 alpha */
-  --ayu-mirage-editor-selection-inactive: rgba(
-    64,
-    159,
-    255,
-    0.13
-  ); /* #409FFF with 0.13 alpha */
-  --ayu-mirage-editor-find-match-active: #695380;
-  --ayu-mirage-editor-find-match-inactive: rgba(
-    105,
-    83,
-    128,
-    0.4
-  ); /* #695380 with 0.4 alpha */
-  /* --- Syntax Highlighting --- */
-  --ayu-mirage-syntax-tag: #5ccfe6;
-  --ayu-mirage-syntax-func: #ffd173;
-  --ayu-mirage-syntax-entity: #73d0ff;
-  --ayu-mirage-syntax-string: #d5ff80;
-  --ayu-mirage-syntax-regexp: #95e6cb;
-  --ayu-mirage-syntax-markup: #f28779;
-  --ayu-mirage-syntax-keyword: #ffad66;
-  --ayu-mirage-syntax-special: #ffdfb3;
-  --ayu-mirage-syntax-comment: rgba(
-    184,
-    207,
-    230,
-    0.5
-  ); /* #B8CFE6 with 0.5 alpha */
-  --ayu-mirage-syntax-constant: #dfbfff;
-  --ayu-mirage-syntax-operator: #f29e74;
-
-  /* --- VCS (Version Control) --- */
-  --ayu-mirage-vcs-added: #87d96c;
-  --ayu-mirage-vcs-modified: #80bfff;
-  --ayu-mirage-vcs-removed: #f27983;
-}
-
+/* Started with https://thecascade.dev/article/least-amount-of-css/ */
 html {
   color-scheme: dark light;
 }
@@ -87,6 +7,7 @@ body {
   font-family: system-ui;
   font-size: 1.25rem;
   line-height: 1.5;
+  margin: 0;
 }
 
 img,
@@ -102,7 +23,186 @@ pre > code {
   overflow-x: scroll;
 }
 
+header {
+  margin-inline: auto;
+  text-align: center;
+}
+
 main {
   max-width: min(70ch, 100% - 4rem);
   margin-inline: auto;
+}
+
+footer {
+  background-color: var(--ayu-ui-panel-bg);
+  margin-inline: auto;
+  text-align: center;
+}
+
+:root {
+  /* Using ayu mirage for dark theme */
+  /* --- Base UI & Editor --- */
+  --ayu-ui-base: #1f2430;
+  --ayu-editor-base: #242936;
+
+  /* --- Common Colors --- */
+  --ayu-common-accent: #ffcc66;
+  --ayu-common-error: #ff6666;
+
+  /* --- UI Colors --- */
+  --ayu-ui-fg: #707a8c;
+  --ayu-ui-bg: var(--ayu-ui-base);
+  --ayu-ui-line: #171b24;
+  --ayu-ui-selection-active: rgba(
+    99,
+    117,
+    153,
+    0.15
+  ); /* #637599 with 0.15 alpha */
+  --ayu-ui-selection-normal: rgba(
+    105,
+    117,
+    140,
+    0.12
+  ); /* #69758C with 0.12 alpha */
+  --ayu-ui-panel-bg: #1c212b;
+  --ayu-ui-panel-shadow: rgba(18, 21, 28, 0.7); /* #12151C with 0.7 alpha */
+
+  /* --- Editor Colors --- */
+  --ayu-editor-fg: #cccac2;
+  --ayu-editor-bg: var(--ayu-editor-base);
+  --ayu-editor-line: #1a1f29;
+  --ayu-editor-selection-active: rgba(
+    64,
+    159,
+    255,
+    0.25
+  ); /* #409FFF with 0.25 alpha */
+  --ayu-editor-selection-inactive: rgba(
+    64,
+    159,
+    255,
+    0.13
+  ); /* #409FFF with 0.13 alpha */
+  --ayu-editor-find-match-active: #695380;
+  --ayu-editor-find-match-inactive: rgba(
+    105,
+    83,
+    128,
+    0.4
+  ); /* #695380 with 0.4 alpha */
+  /* --- Syntax Highlighting --- */
+  --ayu-syntax-tag: #5ccfe6;
+  --ayu-syntax-func: #ffd173;
+  --ayu-syntax-entity: #73d0ff;
+  --ayu-syntax-string: #d5ff80;
+  --ayu-syntax-regexp: #95e6cb;
+  --ayu-syntax-markup: #f28779;
+  --ayu-syntax-keyword: #ffad66;
+  --ayu-syntax-special: #ffdfb3;
+  --ayu-syntax-comment: rgba(184, 207, 230, 0.5); /* #B8CFE6 with 0.5 alpha */
+  --ayu-syntax-constant: #dfbfff;
+  --ayu-syntax-operator: #f29e74;
+
+  /* --- VCS (Version Control) --- */
+  --ayu-vcs-added: #87d96c;
+  --ayu-vcs-modified: #80bfff;
+  --ayu-vcs-removed: #f27983;
+  background-color: var(--ayu-ui-base);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Using ayu light for light theme */
+    --ayu-ui-base: #f8f9fa;
+    --ayu-editor-base: #fcfcfc;
+
+    --ayu-common-accent: #ffaa33;
+    --ayu-common-error: #e65050;
+
+    --ayu-ui-fg: #8a9199;
+    --ayu-ui-bg: var(--ayu-ui-base);
+    --ayu-ui-line: rgba(107, 125, 143, 0.12); /* #6B7D8F with 0.12 alpha */
+    --ayu-ui-selection-active: rgba(
+      86,
+      114,
+      143,
+      0.12
+    ); /* #56728F with 0.12 alpha */
+    --ayu-ui-selection-normal: rgba(
+      107,
+      125,
+      143,
+      0.12
+    ); /* #6B7D8F with 0.12 alpha */
+    --ayu-ui-panel-bg: #f3f4f5;
+    --ayu-ui-panel-shadow: rgba(0, 0, 0, 0.15); /* #000000 with 0.15 alpha */
+
+    --ayu-editor-fg: #5c6166;
+    --ayu-editor-bg: var(--ayu-editor-base);
+    --ayu-editor-line: rgba(138, 145, 153, 0.1); /* #8A9199 with 0.1 alpha */
+    --ayu-editor-selection-active: rgba(
+      3,
+      91,
+      214,
+      0.15
+    ); /* #035BD6 with 0.15 alpha */
+    --ayu-editor-selection-inactive: rgba(
+      3,
+      91,
+      214,
+      0.07
+    ); /* #035BD6 with 0.07 alpha */
+    --ayu-editor-find-match-active: rgba(
+      159,
+      64,
+      255,
+      0.17
+    ); /* #9F40FF with 0.17 alpha */
+    --ayu-editor-find-match-inactive: rgba(
+      159,
+      64,
+      255,
+      0.8
+    ); /* #9F40FF with 0.8 alpha */
+    --ayu-editor-gutter-active: rgba(
+      138,
+      145,
+      153,
+      0.8
+    ); /* #8A9199 with 0.8 alpha */
+    --ayu-editor-gutter-normal: rgba(
+      138,
+      145,
+      153,
+      0.4
+    ); /* #8A9199 with 0.4 alpha */
+    --ayu-editor-indent-guide-active: rgba(
+      138,
+      145,
+      153,
+      0.35
+    ); /* #8A9199 with 0.35 alpha */
+    --ayu-editor-indent-guide-normal: rgba(
+      138,
+      145,
+      153,
+      0.18
+    ); /* #8A9199 with 0.18 alpha */
+
+    --ayu-syntax-tag: #55b4d4;
+    --ayu-syntax-func: #f2ae49;
+    --ayu-syntax-entity: #399ee6;
+    --ayu-syntax-string: #86b300;
+    --ayu-syntax-regexp: #4cbf99;
+    --ayu-syntax-markup: #f07171;
+    --ayu-syntax-keyword: #fa8d3e;
+    --ayu-syntax-special: #e6ba7e;
+    --ayu-syntax-comment: rgba(120, 123, 128, 0.6); /* #787B80 with 0.6 alpha */
+    --ayu-syntax-constant: #a37acc;
+    --ayu-syntax-operator: #ed9366;
+
+    --ayu-vcs-added: #6cbf43;
+    --ayu-vcs-modified: #478acc;
+    --ayu-vcs-removed: #ff7383;
+  }
 }

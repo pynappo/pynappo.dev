@@ -1,6 +1,6 @@
 #let category-tab(name: "") = context {
   if target() == "html" {
-    html.a(class: "tag", href: "/blog/by-tag/" + name)[name <tag>]
+    html.a(class: "tag", href: "/blog/by-tag/" + name)[#name]
   } else {
     [[#name <tag>]]
   }

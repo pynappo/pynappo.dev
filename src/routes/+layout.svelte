@@ -1,6 +1,11 @@
 <script lang="ts">
+	import ThemeToggle from '$lib/ui/ThemeToggle.svelte';
 	let { children } = $props();
 </script>
+
+<svelte:head>
+	<link rel="stylesheet" href="/css/main.css">
+</svelte:head>
 
 <header>
 	<nav>
@@ -11,11 +16,8 @@
 			Blog
 		</a>
 	</nav>
+	<ThemeToggle/>
 </header>
-
-<svelte:head>
-	<link rel="stylesheet" href="/css/main.css">
-</svelte:head>
 
 <main>
 	{@render children()}

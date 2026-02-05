@@ -1,5 +1,6 @@
+const TYPST_BLOG_PATH = "/src/routes/blog/article";
 export const fetchTypstPosts = async () => {
-	const allPostFiles = import.meta.glob("/typst/blog/*.typ", {
+	const allPostFiles = import.meta.glob("/src/routes/blog/article/*.typ", {
 		query: "?parts",
 	});
 	const iterablePostFiles = Object.entries(allPostFiles);
@@ -7,7 +8,7 @@ export const fetchTypstPosts = async () => {
 	const allPosts = await Promise.all(
 		iterablePostFiles.map(async ([path, resolver]) => {
 			const { title, description, body, tags } = await resolver();
-			const postPath = path.slice(11, -4);
+			const postPath = path.slice(TYPST_BLOG_PATH.length + 1, -4);
 
 			return {
 				title,
