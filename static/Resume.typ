@@ -90,7 +90,7 @@
 )
 
 
-#let education(grad-date: [May 2025]) = {
+#let education() = {
   [
     = #smallcaps([Education])
     #line(length: 100%)
@@ -102,7 +102,7 @@
       ],
       [
         San Jose, CA #linebreak()
-        Aug. 2022 -- #grad-date
+        Aug. 2022 -- May 2025
       ],
       rows: auto,
     )

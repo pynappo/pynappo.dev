@@ -13,19 +13,22 @@
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^5.2.7",
-		"@myriaddreamin/typst-ts-node-compiler": "^0.6.1-rc5",
+		"@myriaddreamin/typst-ts-node-compiler": "^0.7.0-rc2",
 		"@neoconfetti/svelte": "^2.2.2",
-		"@sveltejs/adapter-auto": "^7.0.0",
-		"@sveltejs/kit": "^2.49.4",
+		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/kit": "^2.53.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@xmldom/xmldom": "^0.8.11",
-		"svelte": "^5.46.3",
+		"svelte": "^5.53.5",
 		"svelte-adapter-bun": "^1.0.1",
-		"svelte-check": "^4.3.5",
+		"svelte-check": "^4.4.4",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
 		"@myriaddreamin/vite-plugin-typst": "^0.7.0-rc2"
+	},
+	"patchedDependencies": {
+		"@myriaddreamin/vite-plugin-typst@0.7.0-rc2": "patches/@myriaddreamin%2Fvite-plugin-typst@0.7.0-rc2.patch"
 	}
 }
