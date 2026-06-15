@@ -121,7 +121,7 @@
     #line(length: 100%)
     #experience_header(
       [
-        == Software Development Engineer Intern
+        == Software Engineer Intern
         Amazon Web Services
       ],
       [
@@ -135,8 +135,7 @@
       accounts via CloudFormation, enabling safer testing up to 10 minutes faster than previous testing workflows.
     - Resolved a CLI bug by collaborating with the internal tooling team, enabling tool compatibility for our codebase.
     - Optimized local development builds by skipping unnecessary tasks, cutting build times by over 60%.
-    - Authored 5 pages of technical documentation on tool usage, project status, and future maintenance, ensuring
-      long-term sustainability and maintainability.
+    - Authored 5 pages of technical documentation on tool usage and project status, ensuring long-term maintainability.
     // - Drove project velocity across 6 Agile sprints by proactively communicating updates, upcoming work, and blockers.
   ]
 }
@@ -150,11 +149,10 @@
       [*#github("nvim-neo-tree", "neo-tree.nvim")* | CI/CD, Lua, Unix/Linux/Windows],
       [December 2024 -- Present],
     )
-    - Lead maintainer of one of the largest Neovim file-tree plugins, with 5.3k+ GitHub stars.
-    - Engineered a robust GitHub Actions CI pipeline, running hundreds of unit and end-to-end tests using the Busted
-      framework to ensure stability across 3 years of Neovim versions and operating systems.
-    - Refactored 3,000+ lines of code to be thoroughly type-annotated for improved developer experience.
-    - Personally resolved 80+ issues - non-ASCII text handling, performance issues, user feature requests, and UI bugs.
+    - Lead maintainer of a large Neovim file-tree plugin, with 5.5k+ GitHub stars and 35k+ monthly downloads.
+    - Setup GitHub Actions to run hundreds of unit and end-to-end tests in CI, ensuring compatibility across 3 years of Neovim versions and operating systems.
+    - Refactored 3,000+ lines of legacy code to improve readability, type annotations for DX, and performance.
+    - Personally resolved 120+ issues - non-ASCII text handling, performance issues, user feature requests, and UI bugs.
     - Overhauled Git integration to improve parsing time by >70%, significantly reducing git-related stutters.
     // - Improved user documentation by simplifying technical wording, documenting edge cases, and listing common configuration tweaks.
 
@@ -165,7 +163,7 @@
     )
     - Led a team of 4 to build an AI interactive storytelling app in 2 days that won "Best AI Hack" at SFHacks 2024.
     - Engineered AI prompts for LLMs and Stable Diffusion XL for age-appropriate stories and stylized pictures.
-    - Created an autosummarization system, improving story consistency for LLMs with smaller context windows.
+    - Built an autosummarization system to improve story consistency for LLMs with smaller context windows.
     - Implemented our designer's frontend UI designs from Figma in React components using Tailwind CSS.
     - Stored story data in MongoDB and illustrations in an AWS S3 bucket to automatically save and restore stories.
 
@@ -178,31 +176,29 @@
     - Scraped RMP's GraphQL API with Python and Postman queries to retrieve updated data across 1000s of schools.
     - Wrote a TypeScript service to fetch professor data by school on-demand, improving initial search latency by >90%.
     - Integrated Elasticsearch to index 10+ MB of professor data, achieving sub-millisecond search latency.
-    - Designed a modern frontend UI with shadcn-svelte and Tailwind CSS.
     - Containerized the app and services using Docker Compose for consistent local development and deployment.
-
-    #experience_header(
-      [*#link(
-          "https://github.com/PrabhnoorKhatkar/CS157A-Team10",
-          [Brushstroke Bargains 🔗],
-        )* | MySQL, Java (JSP), Shoelace, HTML, CSS],
-      [October 2024 -- December 2024],
-    )
-    - Led frontend and middleware development for a real-time art auction website project.
-    - Secured user data using email + password authentication (with SHA256 hashing) in MySQL + Java.
-    - Modernized every page of the frontend UI using Shoelace web components and CSS animations.
+    //
+    // #experience_header(
+    //   [*#link(
+    //       "https://github.com/PrabhnoorKhatkar/CS157A-Team10",
+    //       [Brushstroke Bargains 🔗],
+    //     )* | MySQL, Java (JSP), Shoelace, HTML, CSS],
+    //   [October 2024 -- December 2024],
+    // )
+    // - Directed frontend and middleware development for a real-time art auction website.
+    // - Secured user data using email + password authentication (with SHA256 hashing) in MySQL + Java.
+    // - Modernized every page of the frontend UI using Shoelace web components and CSS animations.
   ]
 }
 
 #let technologies() = {
   [
-    #pagebreak()
     = #smallcaps([Technologies])
     #line(length: 100%)
-    - *Languages:* C\#, Java, TypeScript/JavaScript, HTML, CSS (+ SASS/Less), Python, Lua, Go, C, C++, SQL
+    - *Languages:* C\#, Java, TypeScript/JavaScript, HTML, CSS (+ SASS/Less), Python, Lua, Go, SQL
     - *Web frameworks/UI libraries:* React/Next.js, Svelte/SvelteKit, Tailwind CSS, daisyUI, Shoelace
-    - *Services:* MongoDB, PostgreSQL, Prisma, AWS S3, ElasticSearch, MySQL
-    - *Tools/OS:* Git, Neovim, IntelliJ, Eclipse, Docker, Postman, Bash/ZSH, Linux/Unix, GitHub Actions, Ansible
+    - *Services:* MongoDB, Prisma, AWS S3, ElasticSearch, MySQL
+    - *Tools/OS:* Git, Docker, Postman, Bash/ZSH, Linux/Unix, GitHub Actions, Ansible
   ]
 }
 
