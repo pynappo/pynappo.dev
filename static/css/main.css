@@ -1,13 +1,20 @@
-/* Started with https://thecascade.dev/article/least-amount-of-css/ */
-html {
-  color-scheme: dark light;
-}
-
+@import url("https://fonts.bunny.net/css?family=inconsolata:400");
+/* Started with https://thecascade.dev/article/least-amount-of-css/. assisted with google gemini for tedious things like
+* the ayu-mirage color css and syntax highlighing classes. */
 body {
   font-family: system-ui;
   font-size: 1.25rem;
   line-height: 1.5;
   margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 img,
@@ -21,11 +28,23 @@ pre > code {
   max-width: 100%;
   display: block;
   overflow-x: scroll;
+  padding: 0px 20px;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0px,
+    black 20px,
+    black calc(100% - 20px),
+    transparent 100%
+  );
+  background-color: var(--ayu-editor-base);
 }
 
 header {
   margin-inline: auto;
   text-align: center;
+  nav {
+    display: inline;
+  }
 }
 
 main {
@@ -37,172 +56,627 @@ footer {
   background-color: var(--ayu-ui-panel-bg);
   margin-inline: auto;
   text-align: center;
+  margin-top: 1rem;
+}
+
+#color-scheme-switcher {
+  display: none;
+  &.visible {
+    display: flex;
+    flex-direction: row;
+    border: none;
+  }
+
+  legend {
+    /* hide from view */
+    position: absolute;
+    left: -100vw;
+  }
+
+  label {
+    position: relative;
+    padding: 12px 0;
+  }
+
+  label:first-of-type {
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+  }
+
+  label:last-of-type {
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+  }
+
+  input {
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    left: -0.05em;
+    top: 0.2em;
+    opacity: 0;
+  }
+}
+
+/* https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/ */
+.scroll-shadows {
+  max-height: 200px;
+  overflow: auto;
+
+  background:
+/* Shadow Cover TOP */
+    linear-gradient(white 30%, rgba(255, 255, 255, 0)) center top,
+    /* Shadow Cover BOTTOM */
+    linear-gradient(rgba(255, 255, 255, 0), white 70%) center bottom,
+    /* Shadow TOP */
+    radial-gradient(
+      farthest-side at 50% 0,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0)
+    ) center top,
+    /* Shadow BOTTOM */
+    radial-gradient(
+      farthest-side at 50% 100%,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0)
+    ) center bottom;
+
+  background-repeat: no-repeat;
+  background-size:
+    100% 40px,
+    100% 40px,
+    100% 14px,
+    100% 14px;
+  background-attachment: local, local, scroll, scroll;
 }
 
 :root {
-  /* Using ayu mirage for dark theme */
+  color-scheme: dark light;
+
+  &[data-color-scheme="light"] {
+    color-scheme: light;
+  }
+  &[data-color-scheme="dark"] {
+    color-scheme: dark;
+  }
+
+  /* 2. Unified Variables using light-dark(light, dark) */
   /* --- Base UI & Editor --- */
-  --ayu-ui-base: #1f2430;
-  --ayu-editor-base: #242936;
+  --ayu-ui-base: light-dark(#f8f9fa, #1f2430);
+  --ayu-editor-base: light-dark(#fcfcfc, #242936);
 
   /* --- Common Colors --- */
-  --ayu-common-accent: #ffcc66;
-  --ayu-common-error: #ff6666;
+  --ayu-common-accent: light-dark(#ffaa33, #ffcc66);
+  --ayu-common-error: light-dark(#e65050, #ff6666);
 
   /* --- UI Colors --- */
-  --ayu-ui-fg: #707a8c;
+  --ayu-ui-fg: light-dark(#8a9199, #707a8c);
   --ayu-ui-bg: var(--ayu-ui-base);
-  --ayu-ui-line: #171b24;
-  --ayu-ui-selection-active: rgba(
-    99,
-    117,
-    153,
-    0.15
-  ); /* #637599 with 0.15 alpha */
-  --ayu-ui-selection-normal: rgba(
-    105,
-    117,
-    140,
-    0.12
-  ); /* #69758C with 0.12 alpha */
-  --ayu-ui-panel-bg: #1c212b;
-  --ayu-ui-panel-shadow: rgba(18, 21, 28, 0.7); /* #12151C with 0.7 alpha */
+  --ayu-ui-line: light-dark(rgba(107, 125, 143, 0.12), #171b24);
+  --ayu-ui-selection-active: light-dark(
+    rgba(86, 114, 143, 0.12),
+    rgba(99, 117, 153, 0.15)
+  );
+  --ayu-ui-selection-normal: light-dark(
+    rgba(107, 125, 143, 0.12),
+    rgba(105, 117, 140, 0.12)
+  );
+  --ayu-ui-panel-bg: light-dark(#f3f4f5, #1c212b);
+  --ayu-ui-panel-shadow: light-dark(rgba(0, 0, 0, 0.15), rgba(18, 21, 28, 0.7));
 
   /* --- Editor Colors --- */
-  --ayu-editor-fg: #cccac2;
+  --ayu-editor-fg: light-dark(#5c6166, #cccac2);
   --ayu-editor-bg: var(--ayu-editor-base);
-  --ayu-editor-line: #1a1f29;
-  --ayu-editor-selection-active: rgba(
-    64,
-    159,
-    255,
-    0.25
-  ); /* #409FFF with 0.25 alpha */
-  --ayu-editor-selection-inactive: rgba(
-    64,
-    159,
-    255,
-    0.13
-  ); /* #409FFF with 0.13 alpha */
-  --ayu-editor-find-match-active: #695380;
-  --ayu-editor-find-match-inactive: rgba(
-    105,
-    83,
-    128,
-    0.4
-  ); /* #695380 with 0.4 alpha */
+  --ayu-editor-line: light-dark(rgba(138, 145, 153, 0.1), #1a1f29);
+  --ayu-editor-selection-active: light-dark(
+    rgba(3, 91, 214, 0.15),
+    rgba(64, 159, 255, 0.25)
+  );
+  --ayu-editor-selection-inactive: light-dark(
+    rgba(3, 91, 214, 0.07),
+    rgba(64, 159, 255, 0.13)
+  );
+  --ayu-editor-find-match-active: light-dark(rgba(159, 64, 255, 0.17), #695380);
+  --ayu-editor-find-match-inactive: light-dark(
+    rgba(159, 64, 255, 0.8),
+    rgba(105, 83, 128, 0.4)
+  );
+
+  /* Missing dark variants from your source defaults mapped to transparent */
+  --ayu-editor-gutter-active: light-dark(rgba(138, 145, 153, 0.8), transparent);
+  --ayu-editor-gutter-normal: light-dark(rgba(138, 145, 153, 0.4), transparent);
+  --ayu-editor-indent-guide-active: light-dark(
+    rgba(138, 145, 153, 0.35),
+    transparent
+  );
+  --ayu-editor-indent-guide-normal: light-dark(
+    rgba(138, 145, 153, 0.18),
+    transparent
+  );
+
   /* --- Syntax Highlighting --- */
-  --ayu-syntax-tag: #5ccfe6;
-  --ayu-syntax-func: #ffd173;
-  --ayu-syntax-entity: #73d0ff;
-  --ayu-syntax-string: #d5ff80;
-  --ayu-syntax-regexp: #95e6cb;
-  --ayu-syntax-markup: #f28779;
-  --ayu-syntax-keyword: #ffad66;
-  --ayu-syntax-special: #ffdfb3;
-  --ayu-syntax-comment: rgba(184, 207, 230, 0.5); /* #B8CFE6 with 0.5 alpha */
-  --ayu-syntax-constant: #dfbfff;
-  --ayu-syntax-operator: #f29e74;
+  --ayu-syntax-tag: light-dark(#55b4d4, #5ccfe6);
+  --ayu-syntax-func: light-dark(#f2ae49, #ffd173);
+  --ayu-syntax-entity: light-dark(#399ee6, #73d0ff);
+  --ayu-syntax-string: light-dark(#86b300, #d5ff80);
+  --ayu-syntax-regexp: light-dark(#4cbf99, #95e6cb);
+  --ayu-syntax-markup: light-dark(#f07171, #f28779);
+  --ayu-syntax-keyword: light-dark(#fa8d3e, #ffad66);
+  --ayu-syntax-special: light-dark(#e6ba7e, #ffdfb3);
+  --ayu-syntax-comment: light-dark(
+    rgba(120, 123, 128, 0.6),
+    rgba(184, 207, 230, 0.5)
+  );
+  --ayu-syntax-constant: light-dark(#a37acc, #dfbfff);
+  --ayu-syntax-operator: light-dark(#ed9366, #f29e74);
+
+  /* labels from neovim :h treesitter-highlights */
+
+  /* @variable               various variable names */
+  .ts-variable {
+    color: var(--ayu-editor-fg);
+  }
+  /* @variable.builtin       built-in variable names (e.g. `this`, `self`) */
+  .ts-variable-builtin {
+    color: var(--ayu-syntax-func);
+  }
+  /* @variable.parameter      parameters of a function */
+  .ts-variable-parameter {
+    color: var(--ayu-editor-fg);
+  }
+  /* @variable.parameter.builtin      special parameters (e.g. `_`, `it`) */
+  .ts-variable-parameter-builtin {
+    color: var(--ayu-syntax-func);
+  }
+  /* @variable.member                object and struct fields */
+  .ts-variable-member {
+    color: var(--ayu-syntax-tag);
+  }
+
+  /* @constant               constant identifiers */
+  .ts-constant {
+    color: var(--ayu-syntax-constant);
+  }
+  /* @constant.builtin       built-in constant values */
+  .ts-constant-builtin {
+    color: var(--ayu-syntax-constant);
+  }
+  /* @constant.macro         constants defined by the preprocessor */
+  .ts-constant-macro {
+    color: var(--ayu-syntax-constant);
+  }
+
+  /* @module                 modules or namespaces */
+  .ts-module {
+    color: var(--ayu-syntax-func);
+  }
+  /* @module.builtin         built-in modules or namespaces */
+  .ts-module-builtin {
+    color: var(--ayu-syntax-func);
+  }
+  /* @label                  `GOTO` and other labels (e.g. `label:` in C), including heredoc labels */
+  .ts-label {
+    color: var(--ayu-syntax-tag);
+  }
+
+  /* @string                 string literals */
+  .ts-string {
+    color: var(--ayu-syntax-string);
+  }
+  /* @string.documentation   string documenting code (e.g. Python docstrings) */
+  .ts-string-documentation {
+    color: var(--ayu-syntax-comment);
+  }
+  /* @string.regexp          regular expressions */
+  .ts-string-regexp {
+    color: var(--ayu-syntax-regexp);
+  }
+  /* @string.escape          escape sequences */
+  .ts-string-escape {
+    color: var(--ayu-syntax-special);
+  }
+  /* @string.special         other special strings (e.g. dates) */
+  .ts-string-special {
+    color: var(--ayu-syntax-special);
+  }
+  /* @string.special.symbol  symbols or atoms */
+  .ts-string-special-symbol {
+    color: var(--ayu-syntax-constant);
+  }
+  /* @string.special.path    filenames */
+  .ts-string-special-path {
+    color: var(--ayu-syntax-string);
+  }
+  /* @string.special.url     URIs (e.g. hyperlinks) */
+  .ts-string-special-url {
+    color: var(--ayu-syntax-entity);
+    text-decoration: underline;
+  }
+
+  /* @character              character literals */
+  .ts-character {
+    color: var(--ayu-syntax-string);
+  }
+  /* @character.special       special characters (e.g. wildcards) */
+  .ts-character-special {
+    color: var(--ayu-syntax-special);
+  }
+
+  /* @boolean                boolean literals */
+  .ts-boolean {
+    color: var(--ayu-syntax-constant);
+  }
+  /* @number                 numeric literals */
+  .ts-number {
+    color: var(--ayu-syntax-constant);
+  }
+  /* @number.float           floating-point number literals */
+  .ts-number-float {
+    color: var(--ayu-syntax-constant);
+  }
+
+  /* @type                   type or class definitions and annotations */
+  .ts-type {
+    color: var(--ayu-syntax-entity);
+  }
+  /* @type.builtin           built-in types */
+  .ts-type-builtin {
+    color: var(--ayu-syntax-entity);
+  }
+  /* @type.definition        identifiers in type definitions (e.g. `typedef <type> <identifier>` in C) */
+  .ts-type-definition {
+    color: var(--ayu-syntax-entity);
+  }
+
+  /* @attribute              attribute annotations (e.g. Python decorators, Rust lifetimes) */
+  .ts-attribute {
+    color: var(--ayu-syntax-func);
+  }
+  /* @attribute.builtin      builtin annotations (e.g. `@property` in Python) */
+  .ts-attribute.builtin {
+    color: var(--ayu-syntax-func);
+  }
+  /* @property               the key in key/value pairs */
+  .ts-property {
+    color: var(--ayu-syntax-tag);
+  }
+
+  /* @function               function definitions */
+  .ts-function {
+    color: var(--ayu-syntax-func);
+  }
+  /* @function.builtin       built-in functions */
+  .ts-function-builtin {
+    color: var(--ayu-syntax-func);
+  }
+  /* @function.call          function calls */
+  .ts-function-call {
+    color: var(--ayu-syntax-func);
+  }
+  /* @function.macro         preprocessor macros */
+  .ts-function-macro {
+    color: var(--ayu-syntax-func);
+  }
+
+  /* @function.method        method definitions */
+  .ts-function-method {
+    color: var(--ayu-syntax-func);
+  }
+  /* @function.method.call   method calls */
+  .ts-function-method-call {
+    color: var(--ayu-syntax-func);
+  }
+
+  /* @constructor            constructor calls and definitions */
+  .ts-constructor {
+    color: var(--ayu-syntax-entity);
+  }
+  /* @operator               symbolic operators (e.g. `+`, `*`) */
+  .ts-operator {
+    color: var(--ayu-syntax-operator);
+  }
+
+  /* @keyword                keywords not fitting into specific categories */
+  .ts-keyword {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.coroutine      keywords related to coroutines (e.g. `go` in Go, `async/await` in Python) */
+  .ts-keyword-coroutine {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.function       keywords that define a function (e.g. `func` in Go, `def` in Python) */
+  .ts-keyword-function {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.operator       operators that are English words (e.g. `and`, `or`) */
+  .ts-keyword-operator {
+    color: var(--ayu-syntax-operator);
+  }
+  /* @keyword.import         keywords for including or exporting modules (e.g. `import`, `from` in Python) */
+  .ts-keyword-import {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.type           keywords describing namespaces and composite types (e.g. `struct`, `enum`) */
+  .ts-keyword-type {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.modifier       keywords modifying other constructs (e.g. `const`, `static`, `public`) */
+  .ts-keyword-modifier {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.repeat         keywords related to loops (e.g. `for`, `while`) */
+  .ts-keyword-repeat {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.return         keywords like `return` and `yield` */
+  .ts-keyword-return {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.debug          keywords related to debugging */
+  .ts-keyword-debug {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.exception      keywords related to exceptions (e.g. `throw`, `catch`) */
+  .ts-keyword-exception {
+    color: var(--ayu-syntax-keyword);
+  }
+
+  /* @keyword.conditional           keywords related to conditionals (e.g. `if`, `else`) */
+  .ts-keyword-conditional {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @keyword.conditional.ternary ternary operator (e.g. `?`, `:`) */
+  .ts-keyword-conditional-ternary {
+    color: var(--ayu-syntax-operator);
+  }
+
+  /* @keyword.directive            various preprocessor directives and shebangs */
+  .ts-keyword-directive {
+    color: var(--ayu-syntax-special);
+  }
+  /* @keyword.directive.define     preprocessor definition directives */
+  .ts-keyword-directive-define {
+    color: var(--ayu-syntax-special);
+  }
+
+  /* @punctuation.delimiter  delimiters (e.g. `;`, `.`, `,`) */
+  .ts-punctuation-delimiter {
+    color: var(--ayu-editor-fg);
+  }
+  /* @punctuation.bracket    brackets (e.g. `()`, `{}`, `[]`) */
+  .ts-punctuation-bracket {
+    color: var(--ayu-editor-fg);
+  }
+  /* @punctuation.special    special symbols (e.g. `{}` in string interpolation) */
+  .ts-punctuation-special {
+    color: var(--ayu-syntax-special);
+  }
+
+  /* @comment                line and block comments */
+  .ts-comment {
+    color: var(--ayu-syntax-comment);
+    font-style: italic;
+  }
+  /* @comment.documentation   comments documenting code */
+  .ts-comment-documentation {
+    color: var(--ayu-syntax-comment);
+  }
+
+  /* @comment.error          error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED`) */
+  .ts-comment-error {
+    color: var(--ayu-common-error);
+    font-weight: bold;
+  }
+  /* @comment.warning        warning-type comments (e.g. `WARNING`, `FIX`, `HACK`) */
+  .ts-comment-warning {
+    color: var(--ayu-common-accent);
+    font-weight: bold;
+  }
+  /* @comment.todo           todo-type comments (e.g. `TODO`, `WIP`) */
+  .ts-comment-todo {
+    color: var(--ayu-syntax-tag);
+    font-weight: bold;
+  }
+  /* @comment.note           note-type comments (e.g. `NOTE`, `INFO`, `XXX`) */
+  .ts-comment-note {
+    color: var(--ayu-syntax-regexp);
+    font-weight: bold;
+  }
+
+  /* @markup.strong          bold text */
+  .ts-markup-strong {
+    font-weight: bold;
+  }
+  /* @markup.italic          italic text */
+  .ts-markup-italic {
+    font-style: italic;
+  }
+  /* @markup.strikethrough   struck-through text */
+  .ts-markup-strikethrough {
+    text-decoration: line-through;
+  }
+  /* @markup.underline       underlined text (only for literal underline markup!) */
+  .ts-markup-underline {
+    text-decoration: underline;
+  }
+
+  /* @markup.heading          headings, titles (including markers) */
+  .ts-markup-heading {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+  /* @markup.heading.1        top-level heading */
+  .ts-markup-heading-1 {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+  .ts-markup-heading-2 {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+  .ts-markup-heading-3 {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+  .ts-markup-heading-4 {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+  .ts-markup-heading-5 {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+  .ts-markup-heading-6 {
+    color: var(--ayu-syntax-keyword);
+    font-weight: bold;
+  }
+
+  /* @markup.quote           block quotes */
+  .ts-markup-quote {
+    color: var(--ayu-syntax-comment);
+  }
+  /* @markup.math            math environments (e.g. `$ ... $` in LaTeX) */
+  .ts-markup-math {
+    color: var(--ayu-syntax-special);
+  }
+
+  /* @markup.link            text references, footnotes, citations, etc. */
+  .ts-markup-link {
+    color: var(--ayu-syntax-entity);
+  }
+  /* @markup.link.label      link, reference descriptions */
+  .ts-markup-link-label {
+    color: var(--ayu-syntax-tag);
+  }
+  /* @markup.link.url        URL-style links */
+  .ts-markup-link-url {
+    color: var(--ayu-syntax-string);
+    text-decoration: underline;
+  }
+
+  /* @markup.raw             literal or verbatim text (e.g. inline code) */
+  .ts-markup-raw {
+    color: var(--ayu-syntax-string);
+  }
+  /* @markup.raw.block       literal or verbatim text as a stand-alone block */
+  .ts-markup-raw-block {
+    color: var(--ayu-editor-fg);
+  }
+
+  /* @markup.list            list markers */
+  .ts-markup-list {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @markup.list.checked    checked todo-style list markers */
+  .ts-markup-list-checked {
+    color: var(--ayu-vcs-added);
+  }
+  /* @markup.list.unchecked  unchecked todo-style list markers */
+  .ts-markup-list-unchecked {
+    color: var(--ayu-syntax-comment);
+  }
+
+  /* @diff.plus              added text (for diff files) */
+  .ts-diff-plus {
+    color: var(--ayu-vcs-added);
+  }
+  /* @diff.minus             deleted text (for diff files) */
+  .ts-diff-removed {
+    color: var(--ayu-vcs-removed);
+  }
+  /* @diff.delta             changed text (for diff files) */
+  .ts-diff-delta {
+    color: var(--ayu-vcs-modified);
+  }
+
+  /* @tag                    XML-style tag names (e.g. in XML, HTML, etc.) */
+  .ts-tag {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @tag.builtin            builtin tag names (e.g. HTML5 tags) */
+  .ts-tag-builtin {
+    color: var(--ayu-syntax-keyword);
+  }
+  /* @tag.attribute          XML-style tag attributes */
+  .ts-tag-attribute {
+    color: var(--ayu-syntax-entity);
+  }
+  /* @tag.delimiter          XML-style tag delimiters */
+  .ts-tag-delimiter {
+    color: var(--ayu-editor-fg);
+  }
 
   /* --- VCS (Version Control) --- */
-  --ayu-vcs-added: #87d96c;
-  --ayu-vcs-modified: #80bfff;
-  --ayu-vcs-removed: #f27983;
+  --ayu-vcs-added: light-dark(#6cbf43, #87d96c);
+  --ayu-vcs-modified: light-dark(#478acc, #80bfff);
+  --ayu-vcs-removed: light-dark(#ff7383, #f27983);
+
   background-color: var(--ayu-ui-base);
 }
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Using ayu light for light theme */
-    --ayu-ui-base: #f8f9fa;
-    --ayu-editor-base: #fcfcfc;
 
-    --ayu-common-accent: #ffaa33;
-    --ayu-common-error: #e65050;
+code {
+  font-family: "Inconsolata", monospace;
+}
 
-    --ayu-ui-fg: #8a9199;
-    --ayu-ui-bg: var(--ayu-ui-base);
-    --ayu-ui-line: rgba(107, 125, 143, 0.12); /* #6B7D8F with 0.12 alpha */
-    --ayu-ui-selection-active: rgba(
-      86,
-      114,
-      143,
-      0.12
-    ); /* #56728F with 0.12 alpha */
-    --ayu-ui-selection-normal: rgba(
-      107,
-      125,
-      143,
-      0.12
-    ); /* #6B7D8F with 0.12 alpha */
-    --ayu-ui-panel-bg: #f3f4f5;
-    --ayu-ui-panel-shadow: rgba(0, 0, 0, 0.15); /* #000000 with 0.15 alpha */
+code::after {
+  background-color: var(--ayu-editor-base);
+}
 
-    --ayu-editor-fg: #5c6166;
-    --ayu-editor-bg: var(--ayu-editor-base);
-    --ayu-editor-line: rgba(138, 145, 153, 0.1); /* #8A9199 with 0.1 alpha */
-    --ayu-editor-selection-active: rgba(
-      3,
-      91,
-      214,
-      0.15
-    ); /* #035BD6 with 0.15 alpha */
-    --ayu-editor-selection-inactive: rgba(
-      3,
-      91,
-      214,
-      0.07
-    ); /* #035BD6 with 0.07 alpha */
-    --ayu-editor-find-match-active: rgba(
-      159,
-      64,
-      255,
-      0.17
-    ); /* #9F40FF with 0.17 alpha */
-    --ayu-editor-find-match-inactive: rgba(
-      159,
-      64,
-      255,
-      0.8
-    ); /* #9F40FF with 0.8 alpha */
-    --ayu-editor-gutter-active: rgba(
-      138,
-      145,
-      153,
-      0.8
-    ); /* #8A9199 with 0.8 alpha */
-    --ayu-editor-gutter-normal: rgba(
-      138,
-      145,
-      153,
-      0.4
-    ); /* #8A9199 with 0.4 alpha */
-    --ayu-editor-indent-guide-active: rgba(
-      138,
-      145,
-      153,
-      0.35
-    ); /* #8A9199 with 0.35 alpha */
-    --ayu-editor-indent-guide-normal: rgba(
-      138,
-      145,
-      153,
-      0.18
-    ); /* #8A9199 with 0.18 alpha */
+details[open] > summary:before {
+  transform: rotate(90deg);
+}
 
-    --ayu-syntax-tag: #55b4d4;
-    --ayu-syntax-func: #f2ae49;
-    --ayu-syntax-entity: #399ee6;
-    --ayu-syntax-string: #86b300;
-    --ayu-syntax-regexp: #4cbf99;
-    --ayu-syntax-markup: #f07171;
-    --ayu-syntax-keyword: #fa8d3e;
-    --ayu-syntax-special: #e6ba7e;
-    --ayu-syntax-comment: rgba(120, 123, 128, 0.6); /* #787B80 with 0.6 alpha */
-    --ayu-syntax-constant: #a37acc;
-    --ayu-syntax-operator: #ed9366;
+details {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  background-color: var(--ayu-ui-panel-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, 0.4);
+}
 
-    --ayu-vcs-added: #6cbf43;
-    --ayu-vcs-modified: #478acc;
-    --ayu-vcs-removed: #ff7383;
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details[open]::details-content {
+  padding: 0.5rem 1rem;
+}
+
+details[open] summary {
+  background-color: var(--ayu-ui-panel-shadow);
+}
+
+/* https://css-tricks.com/how-to-animate-the-details-element/ */
+summary {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  * {
+    margin-block: 0;
   }
+}
+
+summary:before {
+  content: "";
+  width: 0.7em;
+  height: 0.7em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m12.866 3l9.526 16.5a1 1 0 0 1-.866 1.5H2.474a1 1 0 0 1-.866-1.5L11.134 3a1 1 0 0 1 1.732 0'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  mask-image: var(--svg);
+  transform: rotate(90deg);
+  transition: 0.25s transform ease;
+  vertical-align: middle;
+}
+
+/* THE MAGIC 🧙‍♀️ */
+details[open] > summary:before {
+  transform: rotate(180deg);
+}
+
+details > ul {
+  padding-bottom: 1rem;
+  margin-bottom: 0;
 }

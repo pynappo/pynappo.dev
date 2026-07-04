@@ -98,6 +98,18 @@
     #experience_header(
       [
         == San Jose State University
+        _Master of Science in Computer Science_
+      ],
+      [
+        San Jose, CA #linebreak()
+        Expected Graduation May 2028
+      ],
+      rows: auto,
+    )
+
+    #experience_header(
+      [
+        == San Jose State University
         _Bachelor of Science in Computer Science -- GPA: 3.91_
       ],
       [

@@ -1,7 +1,7 @@
-#import "/typst/templates/article.typ": article
+#import "/typst/templates/article.typ": article, details
 
 #show: article.with(
-  article-title: "Building a SvelteKit blog with Typst",
+  article-title: "Building a Typst blog with SvelteKit",
   date-published: datetime(year: 2025, month: 11, day: 6),
   tags: ("meta", "typst"),
 )
@@ -28,7 +28,7 @@ on SvelteKit and found
     from Josh Collinsworth],
 ).
 
-Amazingly, simply adapting the guide to use
+Adapting the guide to use
 #link(
   "https://www.npmjs.com/package/@myriaddreamin/vite-plugin-typst",
   [\@myriaddreamin/vite-plugin-typst],
@@ -60,5 +60,8 @@ export default defineConfig({
 });
 ```
 
-== Why not markdown?
+#details([== Why not markdown?], [
+  I like using typst for general note-taking and typesetting, and would like to help iron out any remaining issues preventing it from
+  being generally useful for generating static HTML.
+])
 

@@ -1,6 +1,8 @@
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
 import { TypstPlugin, checkExecResult } from "@myriaddreamin/vite-plugin-typst";
+import Icons from 'unplugin-icons/vite'
+
 
 export default defineConfig({
   plugins: [
@@ -25,5 +27,8 @@ export default defineConfig({
         };
       },
     }),
+    Icons({
+      compiler: 'svelte',
+    })
   ],
 });

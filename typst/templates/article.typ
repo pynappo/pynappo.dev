@@ -12,6 +12,22 @@
   }
 }
 
+#let details(summary, content) = context {
+  if target() == "html" {
+    html.details[
+      #html.summary[
+        #summary
+      ]
+      #content
+    ]
+  } else {
+    [
+      == #summary
+      #content
+    ]
+  }
+}
+
 #let article(
   date-published: none,
   date-updated: none,
